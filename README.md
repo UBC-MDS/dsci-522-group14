@@ -10,6 +10,7 @@ A publicly available [dataset](https://archive.ics.uci.edu/ml/datasets/Wine+Qual
 > Can we predict the quality rating of a wine based on its physicochemical properties alone?
 
 - insert details about analysis plan here: e.g. data wrangling, feature selection/transformation, model selection, etc. 
+- some other things we may want to mention: is our target balanced/unbalanced? are all features required to make prediction?
 
 
 ### Report
@@ -26,7 +27,7 @@ list environment used and dependencies
 
 ### License
 
-see license file in dsci-522-group14 repository
+See license [file](https://github.com/UBC-MDS/dsci-522-group14/blob/main/LICENSE)
 
 ## References
 
