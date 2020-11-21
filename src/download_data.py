@@ -1,15 +1,15 @@
 # author: Yuyan Guo in Group 14
 # date: 2020-11-20
 
-"""Downloads two csv data files with ";" as demiliters from the web to the same local directory.
+"""Downloads two csv data files using ";" as demiliters from the web to the same local directory.
 
 Usage: src/download_data.py --url_1=<url_1> --url_2=<url_2> --out_file_1=<out_file_1> --out_file_2=<out_file_2>
  
 Options:
-<url_1>             URL from where to download the first csv dataset (must be in standard csv format)
-<url_2>             URL from where to download the second csv dataset (must be in standard csv format)
-<out_file_1>        Path (including filename and must be the same directory as another path) of where to locally write the file corresonding to url_1
-<out_file_2>        Path (including filename and must be the same directory as another path) of where to locally write the file corresonding to url_2
+--url_1=<url_1>             URL from where to download the first csv dataset (must be in standard csv format)
+--url_2=<url_2>             URL from where to download the second csv dataset (must be in standard csv format)
+--out_file_1=<out_file_1>   Path (including filename and must be the same directory as another path) of where to locally write the file corresonding to url_1
+--out_file_2=<out_file_2>   Path (including filename and must be the same directory as another path) of where to locally write the file corresonding to url_2
 """
 
 import os
