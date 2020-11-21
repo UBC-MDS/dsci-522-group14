@@ -1,4 +1,4 @@
-## Feedback and Contribution
+# Feedback and Contribution
 Your contributions are welcomed and much appreciated!
 
 If you notice a bug or have a feature request, please open up an issue [here](https://github.com/UBC-MDS/dsci-522-group14/issues). If you want to contribute a feature or bug fix, you are recommend to fork our repo and submit a pull request. You request will be reviewed within 7 days. All contributors must abide by our [code of conduct](https://github.com/UBC-MDS/dsci-522-group14/blob/main/code_of_conduct.md).
