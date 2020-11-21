@@ -7,7 +7,7 @@ Using machine learning to predict wine quality based on various physical and che
 
 This analysis attempts to build a classification model using a publicly available [dataset](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) containing physicochemical testing results of nearly 5000 wines and their wine quality as a score from 0-10. The goal of the project was to answer the following research question:
 
-> Can we predict if a wine is "good" (6 out of 10) or "bad" ($\leq$ 5 out of 10) based on its physicochemical properties alone?
+> Can we predict if a wine is "good" (6 or higher out of 10) or "bad" (5 or lower out of 10) based on its physicochemical properties alone?
 
 This prediction problem could have been framed as either a multi-class classification, binary classification or regression problem. During exploratory data analysis (EDA) the team found two observations that led us to simplify the problem into a binary classification one (i.e. good vs. bad wine). The first observation, which came from a distribution of the training target values, was that not all classes were well represented for the target values. The second observation was that the majority of wine quality scores were between 4-6. From this information, we decided that a multi-class classification approach would yield poor prediction results and provide little in value in identifying important features for determining wine quality. Whereas with a binary classification, we could better predict which types of chemical and physical characteristics can be attributed to good wines.
 

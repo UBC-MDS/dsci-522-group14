@@ -1,9 +1,9 @@
-Nov 19, 2020 (3-5pm)
+Date: Nov 19, 2020 (2pm PST)
 
-Primary meeting objectives:
-* Choose dataset for Milestone1
-* Brainstorm research questions based on dataset
-* Assign action items for Milestone1 tasks (see below)
+Meeting objectives:
+- Choose dataset for Milestone1
+- Brainstorm research questions based on dataset
+- Assign action items for Milestone1 tasks (see below)
 
 Actions (responsible member):
 * Code of conduct, project proposal draft (Cam)
@@ -12,3 +12,19 @@ Actions (responsible member):
 * Contributing File and EDA (Jianru)
 
 Next meeting: Nov 21, 2020
+
+Date: Nov 21, 2020 (10am PST)
+
+Meeting objectives:
+- Review progress
+- Determine what's left to complete
+- Assign remaining actions
+
+Actions (responsible):
+* dependencies/environment, usage of download data script (Yuyan )
+* changing classification to binary (good/bad wine), update project proposal (Cameron)
+* update EDA for binary classification (Vignesh))
+* Finish contribution file (Jianru)
+* Make sure to create release prior to submitting
+
+
