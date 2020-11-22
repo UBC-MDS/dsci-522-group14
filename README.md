@@ -16,7 +16,7 @@ Next, we determined the point at which to split whether a wine is considered goo
 Feature-target relationships were also plotted during EDA to see if any features stood out as potentially good indicators of wine quality. The most prevelant feature at indicating quality appeared to be alcohol content. Further discussion of the EDA can be found [here](https://github.com/UBC-MDS/dsci-522-group14/blob/main/src/wine_quality_eda.ipynb). 
 
 The data is presented as separate tables for red and white wine, we elected to combine the data into one dataset and see if the type of wine influences the rating. The resulting table contains 12 features (11 numeric and 1 binary categorical). For modelling, the numeric features will be scaled using sci-kit-learn's StandardScalar() transformer. While the categorical feature will be transformed to a binary one using OneHotEncoding(). Given the nature of the classification problem, the following models will be evaluated and scored to determine their appropriateness in prediction:
-- DummyClassifier
+- DummyClassifier (baseline)
 - SVM with RBF Kernel
 - Naive Bayes
 - kNN
@@ -55,9 +55,13 @@ python src/download_data.py --url_1=https://archive.ics.uci.edu/ml/machine-learn
     - numpy==1.19.2
     - ipython==7.19.0
     - altair_saver==0.5.0
-    - altair_saver==0.5.0
     - ipykernel==5.3.4
     
+## License
+
+The DSCI-522-Group-14 materials here are licensed under the MIT License Copyright (c) 2020 DSCI-522-Group-14. If re-using/re-mixing please provide attribution and link to this webpage.
+
+
 ## References
 
 P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
