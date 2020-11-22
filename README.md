@@ -34,17 +34,23 @@ The results of EDA can be found [here](https://github.com/UBC-MDS/dsci-522-group
 
 ### Usage
 
-How to run script to download data (Yuyan to update)
+To replicate the analysis, clone this GitHub repository, install the
+[dependencies](#dependencies) listed below, and run the following
+command at the command line/terminal from the root directory of this
+project to download the data:
+
+```
+python src/download_data.py --url_1=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv --url_2=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv --out_file_1=data/winequality-red.csv --out_file_2=data/winequality-white.csv
+```
 
 ### Dependencies
 
-(Yuyan to update)
-- Python 3.8.5 and Python packages:
+- Python 3.8.3 and Python packages:
     - docopt=0.6.2
-    - requests=2.22.0
-    - pandas=0.25.1R
-    - feather-format=0.4.0
-    - etc. 
+    - requests=2.24.0
+    - pandas=1.1.3
+    - scikit-learn=0.23.2
+    - altair=4.1.0
 
 ## References
 
