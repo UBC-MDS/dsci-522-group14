@@ -9,11 +9,11 @@ This analysis attempts to build a classification model using a publicly availabl
 
 > Can we predict if a wine is "good" (6 or higher out of 10) or "bad" (5 or lower out of 10) based on its physicochemical properties alone?
 
-This prediction problem could have been framed as either a multi-class classification, binary classification or regression problem. During exploratory data analysis (EDA) the team found two observations that led us to simplify the problem into a binary classification one (i.e. good vs. bad wine). The first observation, which came from a distribution of the training target values, was that not all classes were well represented for the target values. The second observation was that the majority of wine quality scores were between 4-6. From this information, we decided that a multi-class classification approach would yield poor prediction results and provide little in value in identifying important features for determining wine quality. Whereas with a binary classification, we could better predict which types of chemical and physical characteristics can be attributed to good wines.
+Based on the main purpose of this project, this prediction problem has been framed as a binary classification problem. During exploratory data analysis (EDA) the team found two observations that led us to prefer using the datasets to identify the quality of the wines as two groups(i.e. good vs. bad wine)instead of multiple groups. The first observation, which came from a distribution of the training target values, was that not all classes were well represented for the target values. The second observation was that the majority of wine quality scores were between 4-6. From this information, we decided that a multi-class classification problem might yield unnecessary poor prediction results and provide little in value in identifying important features for determining wine quality. Whereas with a binary classification, we might get better preditions and better predict which types of chemical and physical characteristics can be attributed to good wines in general.
 
-Next, we determined the point at which to split whether a wine is considered good or bad. This was done with the goal of minimizing the amount of class imbalance in the test data. A split at 5.5 (i.e. 6 or higher is good, 5 or lower is bad) was determined to be the best option and led to a 60/40 class split of good/bad wines respectively. 
+Next, we determined the point at which to split whether a wine is considered good or bad. This was done with the goal of minimizing the amount of class imbalance in the dataset as well as considering the rating in reality. A split at 5.5 (i.e. 6 or higher is good, 5 or lower is bad) was determined to be the resonable option from both perspectives and led to a 60/40 class split of good/bad wines respectively. 
 
-Feature-target relationships were also plotted during EDA to see if any features stood out as good indicators of wine quality. The most prevelant feature at indicating quality appeared to be alcohol content. Further discussion of the EDA can be found [here](https://github.com/UBC-MDS/dsci-522-group14/blob/main/src/wine_quality_eda.ipynb). 
+Feature-target relationships were also plotted during EDA to see if any features stood out as potentially good indicators of wine quality. The most prevelant feature at indicating quality appeared to be alcohol content. Further discussion of the EDA can be found [here](https://github.com/UBC-MDS/dsci-522-group14/blob/main/src/wine_quality_eda.ipynb). 
 
 The data is presented as separate tables for red and white wine, we elected to combine the data into one dataset and see if the type of wine influences the rating. The resulting table contains 12 features (11 numeric and 1 binary categorical). For modelling, the numeric features will be scaled using sci-kit-learn's StandardScalar() transformer. While the categorical feature will be transformed to a binary one using OneHotEncoding(). Given the nature of the classification problem, the following models will be evaluated and scored to determine their appropriateness in prediction:
 - DummyClassifier
@@ -51,7 +51,13 @@ python src/download_data.py --url_1=https://archive.ics.uci.edu/ml/machine-learn
     - pandas==1.1.3
     - scikit-learn==0.23.2
     - altair==4.1.0
-
+    - matplotlib==3.3.3
+    - numpy==1.19.2
+    - ipython==7.19.0
+    - altair_saver==0.5.0
+    - altair_saver==0.5.0
+    - ipykernel==5.3.4
+    
 ## References
 
 P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
