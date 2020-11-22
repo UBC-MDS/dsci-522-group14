@@ -46,11 +46,11 @@ python src/download_data.py --url_1=https://archive.ics.uci.edu/ml/machine-learn
 ### Dependencies
 
 - Python 3.8.3 and Python packages:
-    - docopt=0.6.2
-    - requests=2.24.0
-    - pandas=1.1.3
-    - scikit-learn=0.23.2
-    - altair=4.1.0
+    - docopt==0.6.2
+    - requests==2.24.0
+    - pandas==1.1.3
+    - scikit-learn==0.23.2
+    - altair==4.1.0
 
 ## References
 
