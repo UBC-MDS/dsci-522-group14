@@ -14,7 +14,7 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import matplotlib.pyplot as plt
-import sys
+import os
 
 from selenium import webdriver
 from altair_saver import save
@@ -140,6 +140,10 @@ def save_plot(plot, out, plot_name):
         out (string): output directory
         plot_name (string): name of the plot to be inlcluded in the filename
     """
+
+    if not os.path.exists(out):
+        os.makedirs(out)
+
     file_name = f'{out}/eda_{plot_name}.png'
     driver = webdriver.Chrome()
     save(plot, file_name, method='selenium', webdriver=driver)
