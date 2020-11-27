@@ -14,28 +14,36 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import matplotlib.pyplot as plt
+import sys
+
+from selenium import webdriver
+from altair_saver import save
+import chromedriver_binary
+
+# Handle large data sets without embedding them in the notebook
+alt.data_transformers.enable('data_server')
 
 opt = docopt(__doc__)
 
 def main(datafile, out):
     # Load the train data
-    train_df = pd.read_csv(data)
+    train_df = pd.read_csv(datafile)
 
     # Target plot
     target_plot = draw_target_plot(train_df)
-    save_plot(target_plot, out)
+    save_plot(target_plot, out, "target")
 
     # Numeric columns plot
     num_plot = draw_numeric_plot(train_df)
-    save_plot(num_plot, out)
+    save_plot(num_plot, out, "num")
 
     # Binary column plot
     bin_plot = draw_binary_plot(train_df)
-    save_plot(bin_plot, out)
+    save_plot(bin_plot, out, "bin")
 
     # Correlation plot
     corr_plot = draw_corr_plot(train_df)
-    save_plot(corr_plot, out)
+    save_plot(corr_plot, out, "corr")
     
 
 def draw_numeric_plot(train_df):
@@ -49,7 +57,7 @@ def draw_numeric_plot(train_df):
     """
     num_cols = list(train_df.select_dtypes(include=np.number).iloc[:,1:].columns)
 
-    num_plot = alt.Chart(train_df).mark_area(
+    num_plot = alt.Chart(train_df, title='Distribution of numeric columns vs target').mark_area(
         opacity=0.5,
         interpolate='monotone'
     ).encode(
@@ -65,6 +73,7 @@ def draw_numeric_plot(train_df):
     ).configure_axis(labels=False)
 
     return num_plot
+
 
 def draw_binary_plot(train_df):
     """draw binary plot
@@ -93,9 +102,10 @@ def draw_corr_plot(train_df):
     Returns:
         alt.Chart: plot object of correlation plot
     """
+    num_cols = list(train_df.select_dtypes(include=np.number).iloc[:,1:].columns)
     corr_df = train_df[num_cols].corr(method='spearman').stack().reset_index(name='corr')
 
-    corr_plot = alt.Chart(corr_df).mark_rect().encode(
+    corr_plot = alt.Chart(corr_df, title='Correlation Matrix').mark_rect().encode(
         alt.X('level_0', title=''),
         alt.Y('level_1', title=''),
         color=alt.Color('corr', scale=alt.Scale(domain=(-1, 1), scheme='purpleorange')),
@@ -107,7 +117,34 @@ def draw_corr_plot(train_df):
 
     return corr_plot
 
+def draw_target_plot(train_df):
+    """draw bar chart for target distribution
+
+    Args:
+        train_df (pd.DataFrame): train data split as pandas dataframe
+
+    Returns:
+        alt.Chart: plot object of target plot
+    """
+    target_plot = alt.Chart(train_df, title='Target distribution').mark_bar().encode(
+        x='good_wine',
+        y='count()'
+    )
+
+    return target_plot
+
+def save_plot(plot, out, plot_name):
+    """save the plot object
+
+    Args:
+        plot (alt.Chart): plot bject to save
+        out (string): output directory
+        plot_name (string): name of the plot to be inlcluded in the filename
+    """
+    file_name = f'{out}/eda_{plot_name}.png'
+    driver = webdriver.Chrome()
+    save(plot, file_name, method='selenium', webdriver=driver)
 
 
 if __name__ == '__main__':
-    main(opt['--data'], opt['--out'])
+    main(opt['--datafile'], opt['--out'])
