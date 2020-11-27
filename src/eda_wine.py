@@ -53,7 +53,7 @@ def draw_numeric_plot(train_df):
         train_df (pd.DataFrame): train data split as a pandas dataframe
 
     Returns:
-        alt.Chart: plot object of numeric plot
+        alt.RepeatChart: plot object of numeric plot, repeated for each numeric column
     """
     num_cols = list(train_df.select_dtypes(include=np.number).iloc[:,1:].columns)
 
@@ -73,7 +73,6 @@ def draw_numeric_plot(train_df):
     ).configure_axis(labels=False)
 
     return num_plot
-
 
 def draw_binary_plot(train_df):
     """draw binary plot
@@ -145,6 +144,27 @@ def save_plot(plot, out, plot_name):
     driver = webdriver.Chrome()
     save(plot, file_name, method='selenium', webdriver=driver)
 
+# Tests
+assert_df = pd.DataFrame(
+    {'fixed acidity': [8.4], 
+    'volatile acidity': [0.18], 
+    'citric acid': [0.42], 
+    'residual sugar': [5.1], 
+    'chlorides': [0.036000000000000004], 
+    'free sulfur dioxide': [7.0], 
+    'total sulfur dioxide': [77.0], 
+    'density': [0.9939], 
+    'pH': [3.16], 
+    'sulphates': [0.52], 
+    'alcohol': [11.7], 
+    'type': ['white'], 
+    'good_wine': [False]}
+)
+
+assert isinstance(draw_numeric_plot(assert_df), alt.RepeatChart)
+assert isinstance(draw_binary_plot(assert_df), alt.Chart)
+assert isinstance(draw_corr_plot(assert_df), alt.Chart)
+assert isinstance(draw_target_plot(assert_df), alt.Chart)
 
 if __name__ == '__main__':
     main(opt['--datafile'], opt['--out'])
