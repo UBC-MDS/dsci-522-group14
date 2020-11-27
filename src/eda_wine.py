@@ -57,7 +57,7 @@ def draw_numeric_plot(train_df):
     """
     num_cols = list(train_df.select_dtypes(include=np.number).iloc[:,1:].columns)
 
-    num_plot = alt.Chart(train_df, title='Distribution of numeric columns vs target').mark_area(
+    num_plot = alt.Chart(train_df).mark_area(
         opacity=0.5,
         interpolate='monotone'
     ).encode(
@@ -83,7 +83,7 @@ def draw_binary_plot(train_df):
     Returns:
         alt.Chart: plot object of binary plot
     """
-    bin_plot = alt.Chart(train_df).mark_bar().encode(
+    bin_plot = alt.Chart(train_df, title='Target distribution for each wine type').mark_bar().encode(
         x='good_wine',
         y='count()',
         color='good_wine',
