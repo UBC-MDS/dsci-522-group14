@@ -12,7 +12,7 @@ This analysis attempts to build a classification model using a publicly availabl
 3. **citric acid:** Common addition to wines to boost acidity levels, especially used in commerically produced wines following the fermentation process. 
 4. **residual sugar:** Amount of sugar remaining after fermentation, which impacts the sweetness (or dryness) of the wine. 
 5. **chlorides:** Measure of the amount of salt in a wine, which has a direct impact on taste.
-6. **free sulfur dioxide (SO2):** SO2 is commonly added to wines to prevent bacterial growth and slow the oxidation process. The free $SO_2$ is the portion that is not bound to other molecules.  
+6. **free sulfur dioxide (SO2):** SO2 is commonly added to wines to prevent bacterial growth and slow the oxidation process. The free SO2 is the portion that is not bound to other molecules.  
 7. **total sulfur dioxide:** Total SO2 in wine (free + bound).
 8. **density:** Density of wine measured as specific gravity. 
 9. **pH:** Acidity level of the wine measured on the pH scale (lower = more acidic).
@@ -24,7 +24,7 @@ The goal of the project was to answer the following research question:
 
 > Can we predict if a wine is "good" (6 or higher out of 10) or "bad" (5 or lower out of 10) based on its physicochemical properties alone?
 
-* It is important to note that the labels "good" and "bad" are strictly determined by the relative wine quality scores determined by wine experts and the quality cut-off selected during the exploratory data analysis (EDA). 
+* It is important to note that the labels "good" and "bad" are purely for classification and were selected by the relative wine quality scores determined by wine experts and the quality boundary identified during the exploratory data analysis (EDA). 
 
 This prediction problem could have been framed as either a multi-class classification, binary classification or regression problem. During EDA, the team found two observations that led us to simplify the problem into a binary classification one (i.e. good vs. bad wine). The first observation, which came from a distribution of the training target values, was that not all classes were well represented for the target values. The second observation was that the majority of wine quality scores were between 4-6. From this information, we decided that a multi-class classification approach would yield poor prediction results and provide little in value in identifying important features for determining wine quality. Whereas with a binary classification, we could better predict which types of chemical and physical characteristics can be attributed to good wines.
 
