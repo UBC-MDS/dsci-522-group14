@@ -12,11 +12,11 @@ This analysis attempts to build a classification model using a publicly availabl
 3. **citric acid:** Common addition to wines to boost acidity levels, especially used in commerically produced wines following the fermentation process. 
 4. **residual sugar:** Amount of sugar remaining after fermentation, which impacts the sweetness (or dryness) of the wine. 
 5. **chlorides:** Measure of the amount of salt in a wine, which has a direct impact on taste.
-6. **free sulfur dioxide:** $SO_2$ is commonly added to wines to prevent bacterial growth and slow the oxidation process. The free $SO_2$ is the portion that is not bound to other molecules.  
-7. **total sulfur dioxide:** Total $SO_2$ in wine (free + bound).
+6. **free sulfur dioxide (SO2):** SO2 is commonly added to wines to prevent bacterial growth and slow the oxidation process. The free $SO_2$ is the portion that is not bound to other molecules.  
+7. **total sulfur dioxide:** Total SO2 in wine (free + bound).
 8. **density:** Density of wine measured as specific gravity. 
 9. **pH:** Acidity level of the wine measured on the pH scale (lower = more acidic).
-10. **sulphates:** Salt form of $SO_2$ added to wines to prevent bacterial growth and slow the oxidation process. 
+10. **sulphates:** Salt form of SO2 added to wines to prevent bacterial growth and slow the oxidation process. 
 11. **alcohol:** Percentage of alcohol in wine measured by percent volume. 
 12. **type:** Type of wine, for this data set red or white.
 
