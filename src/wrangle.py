@@ -10,7 +10,7 @@
     and writes the cleaned full data, splited data into the specified directory
 
 
-   Usage: src/pre_process.py --input_r=<input_r> --input_w=<input_w> --out_dir=<out_dir>
+   Usage: src/wrangle.py --input_r=<input_r> --input_w=<input_w> --out_dir=<out_dir>
    
    
    Options:

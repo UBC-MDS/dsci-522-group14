@@ -70,7 +70,7 @@ python src/eda_wine.py --datafile=data/processed/train_set.csv --out=results/
 python src/ml_model.py --path_1=data/processed/train_set.csv --path_2=data/processed/test_set.csv --out_dir=results/
 
 # render final report
-Rscript -e "rmarkdown::render('src/wine_quality_prediction_report.Rmd')"
+Rscript -e "rmarkdown::render('src/wine_quality_prediction_report.Rmd', output_format='github_document')"
 ```
 
 ### Dependencies
