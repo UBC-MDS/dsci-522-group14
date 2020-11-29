@@ -2,6 +2,8 @@
 # date: 2020-11-28
 
 """Carrying out the machine learning analysis pipeline.
+The machine learning pipeline include: splitting the data; identifying the feature types and corresponding transformation; 
+comparing the performace of different classifiers; hyperparameter tuning; assessing the model on test split.
 
 Usage: src/download_data.py --path_1=<path_1> --path_2=<path_2> --out_dir=<out_dir>
  
@@ -76,7 +78,7 @@ def main(path_1, path_2, out_dir):
       store_cross_val_results(model, scores, results_dict)
   model_comparison = pd.DataFrame(results_dict).T.reset_index().rename(columns={"index": "model"})
     
-  # Pick the Random Forest as our model and carry out the hyperparameter optimization using RandomizedSearchCV
+  # Pick the Random Forest Classifier as our model and carry out the hyperparameter optimization using RandomizedSearchCV and save the results
   rf_pipeline = make_pipeline(
       preprocessor, RandomForestClassifier(random_state=123)
   )
@@ -94,7 +96,7 @@ def main(path_1, path_2, out_dir):
                                                                                     "std_test_score", 
                                                                                     "rank_test_score"]]
                                                                                     
-  # Based on the result of RandomizedSearchCV, using the model with best hyperparamters on test set
+  # Based on the result of RandomizedSearchCV, using the model with best hyperparamters on test set and save the test score
   best_n = random_search.best_params_['randomforestclassifier__n_estimators']
   best_depth = random_search.best_params_['randomforestclassifier__max_depth']
 
