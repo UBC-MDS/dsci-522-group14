@@ -1,0 +1,121 @@
+---
+title: "Predicting Wine Quality Using Physicochemical Properties"
+author: "Contributors: Jianru Deng, Yuyan Guo, Vignesh Lakshmi Rajakumar, Cameron Harris"
+output: 
+  html_document:
+    toc: true
+bibliography: ../doc/wine_refs.bib
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+library(here)
+library(kableExtra)
+
+```
+## Acknowledgements
+
+The data set was produced by P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
+Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009. It was sourced from Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
+
+All machine learning processing and analysis was done using Sci-kit Learn (@sk-learn).  Tables and figures in this report were created with the help of the Knitr (@knitr) package. File paths were managed using the Here (@here) package.
+
+## Data Summary
+
+The [dataset](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) used for this prediction task contains physicochemical properties (features) of nearly 5000 wines and their wine quality as a score from 0-10 (targets). The wine quality scores were determined by human wine taste preference (median of at least 3 evaluations made by wine experts). Each expert graded the wine quality between 0 (very bad) and 10 (very excellent). The features (physicochemical properties) were determined by analytic tests. Overall there were eleven numeric features and one categorical feature (see [README.md](https://github.com/UBC-MDS/dsci-522-group14/blob/main/README.md) file for more details on features).
+
+The goal of the project was to answer the following research question:
+
+> Can we predict if a wine is "good" (6 or higher out of 10) or "bad" (5 or lower out of 10) based on its physicochemical properties alone?
+
+It is important to note that the labels "good" and "bad" are purely for classification and were selected by the relative wine quality scores determined by wine experts and the quality boundary identified during the exploratory data analysis (EDA).
+
+This prediction problem could have been framed as either a multi-class classification, binary classification or regression problem. During EDA, the team found two observations that led us to simplify the problem into a binary classification one (i.e. good vs. bad wine). The first observation, which came from a distribution of the training target values, was that not all classes were well represented for the target values. The second observation was that the majority of wine quality scores were between 4-6. From this information, we decided that a multi-class classification approach would yield poor prediction results and provide little in value in identifying important features for determining wine quality. Whereas with a binary classification, we could better predict which types of chemical and physical characteristics can be attributed to good wines.
+
+```{r load data, warnings=FALSE, messages=FALSE, echo=FALSE}
+file_path <- here("data", "processed", "wine_data.csv")
+wine_data <- read_csv(file_path, col_types=cols())
+
+kable(head(wine_data, 10),
+      caption = "Table 1. Sample of processed data used for wine quality prediction") %>% 
+      kable_styling(full_width = F)
+
+```
+
+Next we analyze the target classes for this data set in the figure below. 
+
+<p align="center">
+  <img src=`r here("results", "eda_target.png")`>
+</p>
+
+Figure 1. Target Class Distribution
+
+For this classification problem we determined that the classes were balanced and could begin splitting the data into train and test sets. For this task, an 80/20 train/test split was used. 
+
+## Preprocessing of Features
+
+As mentioned, there were eleven numeric features and one categorical feature. For this analysis, the eleven numeric features were scaled using a standard scalar, which involves removing the mean and scaling to unit variance (@sk-learn). The categorical feature, wine type, only contained two values (red and white) so it was treated as a binary feature.
+
+## Modelling and Cross Validation Scores
+
+All models were evaluated through five-fold cross validation on the training data set. Accuracy was used as the primary metric to evaluate model performance. For this classification problem, there is low consequence to a false negative or false positive classifications, therefore recall and precision are of low importance to us. Accuracy provides a simple, clear way to compare model performance.
+
+$$ \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Number of examples}} $$
+The following models were evaluated to predict the wine quality label:
+
+- Dummy classifier
+- Decision tree
+- RBF SVM: SVC
+- Logistic Regression
+- Random Forest
+
+```{r model results, echo=FALSE, warnings=FALSE, messages=FALSE}
+model_results <- read_csv(here("results", "model_comparison.csv"), col_types = cols())
+
+kable(model_results,
+      caption="Table 2. Cross validation scores for models using training dataset") %>% 
+      kable_styling(full_width = F)
+```
+
+The results in Table 2 show that the Random Forest classified the wine quality with the highest accuracy on the training data with a validation score of `r round(model_results$mean_valid_accuracy[5], 3)`. This was not surprising to our team as Random Forest is one of the most widely used and powerful model for classification problems. 
+
+The SVC with RBF SVM model performed the next best with a validation score of `r round(model_results$mean_valid_accuracy[3], 3)`. 
+
+## Hyperparameter Optimization
+
+Given the cross validation results above, hyperparameter optimization was carried out on our Random Forest model on the number of trees and maximum tree depth parameters. 
+
+```{r hyperparameter results, messages=FALSE, warnings=FALSE, echo=FALSE}
+hyperparameter_results <- read_csv(here("results", "hyperparameter_result.csv"), col_types = cols())
+
+kable(hyperparameter_results, caption = "Table 3. Hyperparameter optimization results") %>% 
+      kable_styling(full_width = F)
+
+```
+The results of optimization two key hyperparameters resulted in slightly improved validation results (note that in Table 3, "test score" is comparable to "valid score" from Table 2).
+
+## Test Data Scores and Conclusions
+
+Finally, with a Random Forest model containing optimized hyperparameters, we were able to test the accuracy of our model on the test data set. 
+
+```{r test scores, warnings=FALSE, messages=FALSE, echo=FALSE}
+test_scores <- read_csv(here("results", "test_score.csv"), col_types = cols())
+colnames(test_scores) <- c("test_score")
+kable(test_scores, caption = "Table 4. Random Forest scores on test data set") %>% 
+      kable_styling(full_width = F)
+
+```
+With an optimized, Random Forest model, we were able to achieve an accuracy of `r round(test_scores$test_score, 3)` on the test data set. This is slightly higher than the validation scores using the training data, which tells us that we may have got a bit lucky on the test data set. But overall, the model is doing a decent job at predicting the wine label of "good" or "bad" given the physicochemical properties as features. 
+
+If we recall the main research question: 
+
+>Can we predict if a wine is "good" (6 or higher out of 10) or "bad" (5 or lower out of 10) based on its physicochemical properties alone?
+
+The results show that with about 85% accuracy, it is possible to predict whether a wine may be considered "good" (6/10 or higher) or "bad" (5/10 or lower).
+
+Some further work that may result in higher prediction accuracy could include feature selection optimization. For example, some of the features seem like they could be correlated (e.g. free sulphur dioxide, total sulphur dioxide, sulphates).
+
+## References
