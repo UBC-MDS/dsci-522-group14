@@ -19,7 +19,7 @@
     --out_dir=<out_dir>     Local file path to folder in which the processed data csvs will be written
 """
 
-# example: 
+# example: python src/wrangle.py --input_r=data/red.csv --input_w=data/white.csv --out_dir=data/processed
 
 import numpy as np
 import pandas as pd
