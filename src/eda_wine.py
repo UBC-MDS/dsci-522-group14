@@ -1,6 +1,9 @@
 #!/usr/bin/env/ python
 # -*- coding: utf-8 -*-
 
+# author: Vignesh Lashmi Rajakumar
+# date: 2020-11-26
+
 """Generate EDA plot images and tables for the wine quality analysis. This is based on the data at: https://archive.ics.uci.edu/ml/datasets/Wine+Quality.
 Usage: eda_wine.py --datafile=<datafile> --out=<output-directory>
 
