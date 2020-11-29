@@ -61,16 +61,16 @@ project to download the data:
 python src/download_data.py --url_1=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv --url_2=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv --out_file_1=data/raw/winequality-red.csv --out_file_2=data/raw/winequality-white.csv
 
 # pre-process data
-python src/pre_process.py --input_r=data/raw/winequality-red.csv --input_w=data/raw/winequality-white.csv --out_dir=data/processed/
+python src/wrangle.py --input_r=data/raw/winequality-red.csv --input_w=data/raw/winequality-white.csv --out_dir=data/processed/
 
 # create exploratory data analysis figure
 python src/eda_wine.py --datafile=data/processed/train_set.csv --out=results/
 
 # tune and test model
-python src/ml_model --path_1=data/processed/train_set.csv --path_2=data/processed/test_set.csv --out_dir=results/
+python src/ml_model.py --path_1=data/processed/train_set.csv --path_2=data/processed/test_set.csv --out_dir=results/
 
 # render final report
-Rscript -e "rmarkdown::render('src/winequality_prediction_report.Rmd', output_format='github_document')"
+Rscript -e "rmarkdown::render('src/wine_quality_prediction_report.Rmd')"
 ```
 
 ### Dependencies

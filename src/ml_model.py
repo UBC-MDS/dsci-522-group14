@@ -5,7 +5,7 @@
 The machine learning pipeline include: splitting the data; identifying the feature types and corresponding transformation; 
 comparing the performace of different classifiers; hyperparameter tuning; assessing the model on test split.
 
-Usage: src/download_data.py --path_1=<path_1> --path_2=<path_2> --out_dir=<out_dir>
+Usage: src/ml_model.py --path_1=<path_1> --path_2=<path_2> --out_dir=<out_dir>
  
 Options:
 --path_1=<path_1>           Path of the training set

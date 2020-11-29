@@ -1,10 +1,11 @@
 ---
 title: "Predicting Wine Quality Using Physicochemical Properties"
 author: "Contributors: Jianru Deng, Yuyan Guo, Vignesh Lakshmi Rajakumar, Cameron Harris"
+always_allow_html: true
 output: 
   html_document:
     toc: true
-bibliography: ../doc/wine_refs.bib
+bibliography: wine_refs.bib
 
 ---
 
@@ -117,5 +118,8 @@ The results show that with about 85% accuracy, it is possible to predict whether
 
 Some further work that may result in higher prediction accuracy could include feature selection optimization. For example, some of the features seem like they could be correlated (e.g. free sulphur dioxide, total sulphur dioxide, sulphates).
 
+The original data-set has an quantitative output metric: a rating between 0-10. This problem could be a candidate for a regression model. It would be interesting to compare the effectiveness and usefulness of this consideration and could be explored in a future iteration. 
+
+Another point of interest in problem is the subjectivity of wine quality. The current data set uses a median rating from multiple tastings from multiple wine experts as an estimation of quality. While we feel that this estimate is a good enough proxy, it is something to be aware of when using this model. 
 
 ## References
