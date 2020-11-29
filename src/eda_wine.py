@@ -63,7 +63,7 @@ def draw_numeric_plot(train_df):
     ).encode(
         alt.X(alt.repeat("repeat"), type='quantitative', scale=alt.Scale(zero=False), bin=alt.Bin(maxbins=100)),
         alt.Y('count()', stack=None),
-        fill='good_wine'
+        fill='target'
     ).properties(
         height=200,
         width=200
@@ -84,9 +84,9 @@ def draw_binary_plot(train_df):
         alt.Chart: plot object of binary plot
     """
     bin_plot = alt.Chart(train_df, title='Target distribution for each wine type').mark_bar().encode(
-        x='good_wine',
+        x='target',
         y='count()',
-        color='good_wine',
+        color='target',
         column='type')
 
     return bin_plot
@@ -126,7 +126,7 @@ def draw_target_plot(train_df):
         alt.Chart: plot object of target plot
     """
     target_plot = alt.Chart(train_df, title='Target distribution').mark_bar().encode(
-        x='good_wine',
+        x='target',
         y='count()'
     )
 
@@ -162,7 +162,7 @@ assert_df = pd.DataFrame(
     'sulphates': [0.52], 
     'alcohol': [11.7], 
     'type': ['white'], 
-    'good_wine': [False]}
+    'target': 'good'}
 )
 
 assert isinstance(draw_numeric_plot(assert_df), alt.RepeatChart)
