@@ -74,7 +74,7 @@ def main(path_1, path_2, out_dir):
       pip = make_pipeline(preprocessor, classifier)
       scores = cross_validate(pip, X_train, y_train, n_jobs=-1, return_train_score=True)
       store_cross_val_results(model, scores, results_dict)
-  model_comparison = pd.DataFrame(results_dict).T
+  model_comparison = pd.DataFrame(results_dict).T.reset_index().rename(columns={"index": "model"})
     
   # Pick the Random Forest as our model and carry out the hyperparameter optimization using RandomizedSearchCV
   rf_pipeline = make_pipeline(
