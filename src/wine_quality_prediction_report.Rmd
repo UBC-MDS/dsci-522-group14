@@ -10,6 +10,7 @@ bibliography: ../doc/wine_refs.bib
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(dpi=300,fig.width=7)
 library(tidyverse)
 library(knitr)
 library(here)
@@ -47,13 +48,11 @@ kable(head(wine_data, 10),
 
 Next we analyze the target classes for this data set in the figure below. 
 
-<p align="center">
-  <img src=`r here("results", "eda_target.png")`>
-</p>
+```{r, fig.align='center', out.width='15%', fig.cap='Figure 1. Target Class Distribution', echo=FALSE}
+knitr::include_graphics(here('results', 'eda_target.png'))
+```
 
-Figure 1. Target Class Distribution
-
-For this classification problem we determined that the classes were balanced and could begin splitting the data into train and test sets. For this task, an 80/20 train/test split was used. 
+For this classification problem we determined that we could ignore class imbalance related intricacies and could begin splitting the data into train and test sets. For this task, an 80/20 train/test split was used. 
 
 ## Preprocessing of Features
 
@@ -117,5 +116,6 @@ If we recall the main research question:
 The results show that with about 85% accuracy, it is possible to predict whether a wine may be considered "good" (6/10 or higher) or "bad" (5/10 or lower).
 
 Some further work that may result in higher prediction accuracy could include feature selection optimization. For example, some of the features seem like they could be correlated (e.g. free sulphur dioxide, total sulphur dioxide, sulphates).
+
 
 ## References
