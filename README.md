@@ -60,6 +60,11 @@ project to download the data:
 python src/download_data.py --url_1=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv --url_2=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv --out_file_1=data/winequality-red.csv --out_file_2=data/winequality-white.csv
 ```
 
+To render the final report:
+```
+Rscript -e "rmarkdown::render('src/wine_quality_prediction_report.Rmd')"
+```
+
 ### Dependencies
 
 - Python 3.8.3 and Python packages:
