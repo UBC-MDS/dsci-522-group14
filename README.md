@@ -40,10 +40,14 @@ The data is presented as separate tables for red and white wine, we elected to c
 - Logistic Regression
 - Random Forest
 
-The results of this analysis will be presented in a report outlining the prediction accuracy of various models (as a table) and discussion of which features are important for this prediction task (e.g. Logistic Regression coefficients). Stay tuned. 
+The results of this analysis will be presented in a report outlining the prediction accuracy of various models (as a table) and discussion of which features are important for this prediction task (e.g. Logistic Regression coefficients).
 
 This Data Set was created by P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
 Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009. It was sourced from the UCI Machine Learning Repository (Dua and Graff 2017). Due to privacy reasons, only the physicochemical properties have been included and information about the company, grape type, price, etc. are left out. 
+
+### Report
+
+The report is available [here](https://ubc-mds.github.io/dsci-522-group14/doc/wine_quality_prediction_report.html)
 
 ### Exploratory Data Analysis (EDA)
 
