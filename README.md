@@ -56,7 +56,7 @@ To replicate the analysis, clone this GitHub repository, install the
 command at the command line/terminal from the root directory of this
 project to download the data:
 
-``` shell
+``` bash
 # download data
 python src/download_data.py --url_1=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv --url_2=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv --out_file_1=data/raw/winequality-red.csv --out_file_2=data/raw/winequality-white.csv
 
