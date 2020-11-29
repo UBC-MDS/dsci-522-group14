@@ -18,15 +18,17 @@ Harris
 The data set was produced by P. Cortez, A. Cerdeira, F. Almeida, T.
 Matos and J. Reis. Modeling wine preferences by data mining from
 physicochemical properties. In Decision Support Systems, Elsevier,
-47(4):547-553, 2009. It was sourced from Dua, D. and Graff, C. (2019).
-UCI Machine Learning Repository \[<http://archive.ics.uci.edu/ml>\].
-Irvine, CA: University of California, School of Information and Computer
-Science.
+47(4):547-553, 2009. It was sourced from (Dua and Graff 2017) Dua, D.
+and Graff, C. (2019). UCI Machine Learning Repository
+\[<http://archive.ics.uci.edu/ml>\]. Irvine, CA: University of
+California, School of Information and Computer Science.
 
 All machine learning processing and analysis was done using Sci-kit
-Learn (Pedregosa et al. (2011)). Tables and figures in this report were
-created with the help of the Knitr (Xie (2014)) package. File paths were
-managed using the Here (Müller (2020)) package.
+Learn (Pedregosa et al. 2011), python (Van Rossum and Drake 2009), R(R
+Core Team 2020). Tables and figures in this report were created with the
+help of the Knitr (Xie 2014), kableExtra (Zhu 2020), docopt(de Jonge
+2018), pandas (team 2020) package. File paths were managed using the
+Here (Müller 2020) package.
 
 ## Data Summary
 
@@ -991,7 +993,7 @@ below.
 
 <div class="figure" style="text-align: center">
 
-<img src="C:/Users/vignesh/career/dsci-522-group14/results/eda_target.png" alt="Figure 1. Target Class Distribution" width="15%" />
+<img src="C:/Users/dengj/ubc_mds_21/ds_block3/tiff_522_ds_workflows/dsci-522-group14/results/eda_target.png" alt="Figure 1. Target Class Distribution" width="15%" />
 
 <p class="caption">
 
@@ -1010,9 +1012,9 @@ train and test sets. For this task, an 80/20 train/test split was used.
 As mentioned, there were eleven numeric features and one categorical
 feature. For this analysis, the eleven numeric features were scaled
 using a standard scalar, which involves removing the mean and scaling to
-unit variance (Pedregosa et al. (2011)). The categorical feature, wine
-type, only contained two values (red and white) so it was treated as a
-binary feature.
+unit variance (\[@sk-learn\]). The categorical feature, wine type, only
+contained two values (red and white) so it was treated as a binary
+feature.
 
 ## Modelling and Cross Validation Scores
 
@@ -1023,7 +1025,7 @@ consequence to a false negative or false positive classifications,
 therefore recall and precision are of low importance to us. Accuracy
 provides a simple, clear way to compare model performance.
 
-\[ \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Number of examples}} \]
+\[ \\text{Accuracy} = \\frac{\\text{Number of correct predictions}}{\\text{Number of examples}} \]
 The following models were evaluated to predict the wine quality label:
 
   - Dummy classifier
@@ -1645,7 +1647,22 @@ aware of when using this model.
 
 ## References
 
-<div id="refs" class="references">
+<div id="refs" class="references hanging-indent">
+
+<div id="ref-docopt">
+
+de Jonge, Edwin. 2018. *Docopt: Command-Line Interface Specification
+Language*. <https://CRAN.R-project.org/package=docopt>.
+
+</div>
+
+<div id="ref-Dua:2019">
+
+Dua, Dheeru, and Casey Graff. 2017. “UCI Machine Learning Repository.”
+University of California, Irvine, School of Information; Computer
+Sciences. <http://archive.ics.uci.edu/ml>.
+
+</div>
 
 <div id="ref-here">
 
@@ -1662,12 +1679,41 @@ Python.” *Journal of Machine Learning Research* 12: 2825–30.
 
 </div>
 
+<div id="ref-R">
+
+R Core Team. 2020. *R: A Language and Environment for Statistical
+Computing*. Vienna, Austria: R Foundation for Statistical Computing.
+<https://www.R-project.org/>.
+
+</div>
+
+<div id="ref-reback2020pandas">
+
+team, The pandas development. 2020. *Pandas-Dev/Pandas: Pandas* (version
+1.1.1). Zenodo. <https://doi.org/10.5281/zenodo.3993412>.
+
+</div>
+
+<div id="ref-Python">
+
+Van Rossum, Guido, and Fred L. Drake. 2009. *Python 3 Reference Manual*.
+Scotts Valley, CA: CreateSpace.
+
+</div>
+
 <div id="ref-knitr">
 
 Xie, Yihui. 2014. “Knitr: A Comprehensive Tool for Reproducible Research
 in R.” In *Implementing Reproducible Computational Research*, edited by
 Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman;
 Hall/CRC. <http://www.crcpress.com/product/isbn/9781466561595>.
+
+</div>
+
+<div id="ref-kableExtra">
+
+Zhu, Hao. 2020. *KableExtra: Construct Complex Table with ’Kable’ and
+Pipe Syntax*. <https://CRAN.R-project.org/package=kableExtra>.
 
 </div>
 
