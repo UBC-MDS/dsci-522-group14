@@ -1,3 +1,18 @@
-.Rproj.user
-.vscode/
+# RStudio files
+.Rproj.user/
+
+### vscode ###
+.vscode/*
+*.code-workspace
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Selenium Log files
 *.log

@@ -2,6 +2,8 @@
 # author: Vignesh Rajakumar (group 14)
 # date: 2020-12-1
 
+all: doc/wine_quality_prediction_report.html
+
 # download data
 data/raw/winequality-red.csv data/raw/winequality-white.csv: src/download_data.py
 	python src/download_data.py --url_1=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv --url_2=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv --out_file_1=data/raw/winequality-red.csv --out_file_2=data/raw/winequality-white.csv
@@ -19,5 +21,10 @@ results/hyperparameter_result.csv results/model_comparison.csv results/test_scor
 	python src/ml_model.py --path_1=data/processed/train_set.csv --path_2=data/processed/test_set.csv --out_dir=results/
 
 # render final report
-doc/wine_quality_prediction_report.md: doc/wine_quality_prediction_report.Rmd results/eda_target.png results/model_comparison.csv results/test_score.csv results/hyperparameter_result.csv
-	Rscript -e "rmarkdown::render('doc/wine_quality_prediction_report.Rmd', output_format='github_document')"
+doc/wine_quality_prediction_report.html: doc/wine_quality_prediction_report.Rmd results/eda_target.png results/model_comparison.csv results/test_score.csv results/hyperparameter_result.csv
+	Rscript -e "rmarkdown::render('doc/wine_quality_prediction_report.Rmd')"
+
+clean:
+	rm -rf data
+	rm -rf results
+	rm -rf doc/wine_quality_prediction_report.html
