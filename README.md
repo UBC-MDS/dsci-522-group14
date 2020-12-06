@@ -57,24 +57,16 @@ The results of EDA can be found [here](https://github.com/UBC-MDS/dsci-522-group
 
 To replicate the analysis, clone this GitHub repository, install the
 [dependencies](#dependencies) listed below, and run the following
-command at the command line/terminal from the root directory of this
-project to download the data:
+command at the command line/terminal from the root directory of the project:
 
-``` bash
-# download data
-python src/download_data.py --url_1=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv --url_2=https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv --out_file_1=data/raw/winequality-red.csv --out_file_2=data/raw/winequality-white.csv
+```bash
+make all
+```
 
-# pre-process data
-python src/wrangle.py --input_r=data/raw/winequality-red.csv --input_w=data/raw/winequality-white.csv --out_dir=data/processed/
+To reset the repo to a clean state, run the following from the root directory of the project:
 
-# create exploratory data analysis figure
-python src/eda_wine.py --datafile=data/processed/train_set.csv --out=results/
-
-# tune and test model
-python src/ml_model.py --path_1=data/processed/train_set.csv --path_2=data/processed/test_set.csv --out_dir=results/
-
-# render final report
-Rscript -e "rmarkdown::render('doc/wine_quality_prediction_report.Rmd', output_format='github_document')"
+```bash
+make clean
 ```
 
 ### Dependencies
