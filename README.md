@@ -92,7 +92,8 @@ Rscript -e "rmarkdown::render('doc/wine_quality_prediction_report.Rmd', output_f
     - ipykernel==5.3.4
     - selenium==3.141.0
     - python-chromedriver-binary==87.0.4280.20.0
-    
+- Other:
+    - Chrome Browser
 ## License
 
 The DSCI-522-Group-14 materials here are licensed under the MIT License Copyright (c) 2020 DSCI-522-Group-14. If re-using/re-mixing please provide attribution and link to this webpage.
