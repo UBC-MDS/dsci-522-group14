@@ -84,6 +84,12 @@ make clean
     - ipykernel==5.3.4
     - selenium==3.141.0
     - python-chromedriver-binary==87.0.4280.20.0
+- R 4.0.2 and R packages:
+    - docopt==1.0.0
+    - tidyverse==1.3.0
+    - knitr==1.29
+    - kableExtra==1.3.1
+
 - Other:
     - Chrome Browser
 ## License
