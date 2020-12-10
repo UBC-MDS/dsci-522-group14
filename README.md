@@ -82,16 +82,23 @@ make clean
     - ipython==7.19.0
     - altair_saver==0.5.0
     - ipykernel==5.3.4
-    - selenium==3.141.0
-    - python-chromedriver-binary==87.0.4280.20.0
 - R 4.0.2 and R packages:
     - here==1.0.0
     - tidyverse==1.3.0
     - knitr==1.29
     - kableExtra==1.3.1
+- NodeJS packages
+    - vega-lite
+    - vega-cli
+    - canvas
 
-- Other:
-    - Chrome Browser
+> **NOTE**: The npm packages listed are mandatory for the figure saving scripts to work. 
+> These are **not** installed automatically when you install `altair_saver` and need to be installed globally with :
+
+``` shell
+npm install -g vega-lite vega-cli canvas
+```
+
 ## License
 
 The DSCI-522-Group-14 materials here are licensed under the MIT License Copyright (c) 2020 DSCI-522-Group-14. If re-using/re-mixing please provide attribution and link to this webpage.
