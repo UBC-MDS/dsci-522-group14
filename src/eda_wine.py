@@ -19,9 +19,7 @@ import altair as alt
 import matplotlib.pyplot as plt
 import os
 
-from selenium import webdriver
 from altair_saver import save
-import chromedriver_binary
 
 # Handle large data sets without embedding them in the notebook
 alt.data_transformers.enable('data_server')
@@ -148,8 +146,7 @@ def save_plot(plot, out, plot_name):
         os.makedirs(out)
 
     file_name = f'{out}/eda_{plot_name}.png'
-    driver = webdriver.Chrome()
-    save(plot, file_name, method='selenium', webdriver=driver)
+    save(plot, file_name)
 
 # Tests
 assert_df = pd.DataFrame(
