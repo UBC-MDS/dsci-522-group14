@@ -49,7 +49,7 @@ Modeling wine preferences by data mining from physicochemical properties. In Dec
 
 ### Report
 
-The report is available [here](https://ubc-mds.github.io/dsci-522-group14/doc/wine_quality_prediction_report.html)
+The final report is available [here](https://ubc-mds.github.io/dsci-522-group14/doc/wine_quality_prediction_report.html).
 
 ### Exploratory Data Analysis (EDA)
 
@@ -86,6 +86,8 @@ To reset the repo to a clean state, run the following from the root directory of
 docker run --rm -p 8787:8787 -e PASSWORD="test" -v $(pwd):/home/data-analysis -it docker.io/library/vigneshrajakumar/wine_predictor make -C "home/data-analysis/" clean
 ```
 
+#### Dependency Diagram of the Makefile
+![](Makefile.png)
 
 ### Dependencies
 
