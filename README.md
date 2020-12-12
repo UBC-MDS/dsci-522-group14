@@ -87,7 +87,7 @@ docker run --rm -p 8787:8787 -e PASSWORD="test" -v $(pwd):/home/data-analysis -i
 ```
 
 #### Dependency Diagram of the Makefile
-![](Makefile.png)
+![](Makefile.png =200x)
 
 ### Dependencies
 
