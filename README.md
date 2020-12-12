@@ -5,7 +5,15 @@ Using machine learning to predict wine quality based on various physical and che
 
 ### About
 
-This analysis attempts to build a classification model using a publicly available [dataset](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) containing physicochemical testing results of nearly 5000 wines and their wine quality as a score from 0-10. The wine quality scores were determined by human wine taste preference (median of at least 3 evaluations made by wine experts). Each expert graded the wine quality between 0 (very bad) and 10 (very excellent). The features (physicochemical properties) were determined by analytical tests. A list of the features with a simple description of each is shown below:
+This analysis attempts to build a classification model using a publicly available [dataset](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) containing physicochemical testing results of nearly 5000 wines and their wine quality as a score from 0-10. The wine quality scores were determined by human wine taste preference (median of at least 3 evaluations made by wine experts). Each expert graded the wine quality between 0 (very bad) and 10 (very excellent). 
+
+The goal of the project was to answer the following research question:
+
+> Can we predict if a wine is "good" (6 or higher out of 10) or "bad" (5 or lower out of 10) based on its physicochemical properties alone?
+
+* It is important to note that the labels "good" and "bad" are purely for classification and were selected by the relative wine quality scores determined by wine experts and the quality boundary identified during the exploratory data analysis (EDA). 
+
+The features (physicochemical properties) were determined by analytical tests. A list of the features with a simple description of each is shown below:
 
 1. **fixed acidity:** Sometimes referred to as titratable acidity, a measurement of the total concentration of titratable acids and free hydrogen ions present in wine. Import for the balance, colour and taste of wines.  
 2. **volatile acidity:** Acids that are not measurable through titration (requires a steaming process) and generally created during the fermentation process. The most common volatile acids are acedic and lactic, further information on acidity can be found [here](http://winemakersacademy.com/understanding-wine-acidity/). 
@@ -19,12 +27,6 @@ This analysis attempts to build a classification model using a publicly availabl
 10. **sulphates:** Salt form of SO2 added to wines to prevent bacterial growth and slow the oxidation process. 
 11. **alcohol:** Percentage of alcohol in wine measured by percent volume. 
 12. **type:** Type of wine, for this data set red or white.
-
-The goal of the project was to answer the following research question:
-
-> Can we predict if a wine is "good" (6 or higher out of 10) or "bad" (5 or lower out of 10) based on its physicochemical properties alone?
-
-* It is important to note that the labels "good" and "bad" are purely for classification and were selected by the relative wine quality scores determined by wine experts and the quality boundary identified during the exploratory data analysis (EDA). 
 
 This prediction problem could have been framed as either a multi-class classification, binary classification or regression problem. During EDA, the team found two observations that led us to simplify the problem into a binary classification one (i.e. good vs. bad wine). The first observation, which came from a distribution of the training target values, was that not all classes were well represented for the target values. The second observation was that the majority of wine quality scores were between 4-6. From this information, we decided that a multi-class classification approach would yield poor prediction results and provide little in value in identifying important features for determining wine quality. Whereas with a binary classification, we could better predict which types of chemical and physical characteristics can be attributed to good wines.
 
