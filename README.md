@@ -49,7 +49,7 @@ Modeling wine preferences by data mining from physicochemical properties. In Dec
 
 ### Report
 
-The report is available [here](https://ubc-mds.github.io/dsci-522-group14/doc/wine_quality_prediction_report.html)
+The final report is available [here](https://ubc-mds.github.io/dsci-522-group14/doc/wine_quality_prediction_report.html).
 
 ### Exploratory Data Analysis (EDA)
 
