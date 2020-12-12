@@ -106,7 +106,7 @@ print(test_scores)
 
 ```
 
-With optimized hyperparameters, the Random Forest model was able to achieve an accuracy of `r round(test_scores$test_score, 3)` on the test data set. This is slightly higher than the validation scores using the training data, which tells us that we may have got a bit lucky on the test data set. But overall, the model is doing a decent job at predicting the wine label of "good" or "bad" given the physicochemical properties as features.
+With optimized hyperparameters, the Random Forest model was able to achieve an accuracy of `r round(test_scores, 3)` on the test data set. This is slightly higher than the validation scores using the training data, which tells us that we may have got a bit lucky on the test data set. But overall, the model is doing a decent job at predicting the wine label of "good" or "bad" given the physicochemical properties as features.
 
 Recalling the main research question:
 
