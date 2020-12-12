@@ -55,6 +55,7 @@ The results of EDA can be found [here](https://github.com/UBC-MDS/dsci-522-group
 
 ### Usage
 
+### Using `make`
 To replicate the analysis, clone this GitHub repository, install the
 [dependencies](#dependencies) listed below, and run the following
 command at the command line/terminal from the root directory of the project:
@@ -68,6 +69,21 @@ To reset the repo to a clean state, run the following from the root directory of
 ```bash
 make clean
 ```
+
+### Using Docker
+
+Make sure you have a working set up of [Docker](https://www.docker.com/get-started) on your pc. Then navigate to the root directory of the project and run
+
+```bash
+docker run --rm -p 8787:8787 -e PASSWORD="test" -v $(pwd):/home/data-analysis -it docker.io/library/vigneshrajakumar/wine_predictor make -C "home/data-analysis/" all
+```
+
+To reset the repo to a clean state, run the following from the root directory of the project:
+
+```bash
+docker run --rm -p 8787:8787 -e PASSWORD="test" -v $(pwd):/home/data-analysis -it docker.io/library/vigneshrajakumar/wine_predictor make -C "home/data-analysis/" clean
+```
+
 
 ### Dependencies
 
