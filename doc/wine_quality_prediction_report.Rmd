@@ -24,7 +24,11 @@ The data set was produced by P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J.
 
 All machine learning processing and analysis was done using Sci-kit Learn [@sk-learn], python [@Python], R[@R]. Tables and figures in this report were created with the help of the Knitr [@knitr], kableExtra [@kableExtra], docopt[@docopt], pandas [@reback2020pandas] package. File paths were managed using the Here [@here] package.
 
-## Data Summary
+## Summary
+
+In this project, we aim to build a supervised machine learning pipeline and fit a best performing classification model to predict if a wine is "good"(6 or higher out of 10) or "bad" (5 or lower out of 10) based on its physicochemical properties. After carrying out the model comparison, the best performing model turned out to be the random forest classifier. It performed reasonably on the unseen test set with test accuracy of 0.85. The test set consisted of 1300 examples, and the model correctly predicted 85% of them. Also the test set is fairly large, so the test accuracy can be trusted to be a good approximation of the model performance on the deployment data. Depending on the specific application of the model, the test accuracy can either be good or not. If the downstream application requires higher accuracy, we propose to keep improving the model with more advanced techniques. More suggestions can be found in the last section of the report: "Further Improvements and Potential Problem".
+
+## Introduction of the Data
 
 The [dataset](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) used for this prediction task contains physicochemical properties (features) of nearly 5000 wines and their wine quality as a score from 0-10 (targets). The wine quality scores were determined by human wine taste preference (median of at least 3 evaluations made by wine experts). Each expert graded the wine quality between 0 (very bad) and 10 (excellent). The features (physicochemical properties) were determined by analytic tests. Overall there were eleven numeric features and one categorical feature (see [README.md](https://github.com/UBC-MDS/dsci-522-group14/blob/main/README.md) file for more details on features).
 
@@ -110,9 +114,13 @@ Recalling the main research question:
 
 > Can we predict if a wine is "good" (6 or higher out of 10) or "bad" (5 or lower out of 10) based on its physicochemical properties alone?
 
-The results show that with 85% accuracy, it is possible to predict whether a wine may be considered "good" (6/10 or higher) or "bad" (5/10 or lower).
+The results show that with 85% test accuracy, which means that the fitted model is able to predict 85% of the test examples correctly. So it is possible to predict whether a wine may be considered "good" (6/10 or higher) or "bad" (5/10 or lower) given the features we have.
 
-Some further work that may result in higher prediction accuracy could include feature selection optimization. For example, some of the features seem like they could be correlated (e.g. free sulphur dioxide, total sulphur dioxide, sulphates).
+## Further Improvements and Potential Problems
+
+Some further work that may result in higher prediction accuracy and higher model interpretability could include feature selection and feature engineering. Based on the result of EDA, some of the features seem like they could be correlated (e.g. free sulphur dioxide, total sulphur dioxide, sulphates), which may be removed after feature selection. The feature engineering may require some domain knowledge, as the features are very domain-specific. However, adding more relevant features can be potentially helpful.
+
+Except for random forest classifier and all the other classifiers we tested, there are still some other powerful classification models which are not tested in this project but may improve the prediction accuracy. (e.g. XGBoost, LightGBM, Catboost etc)
 
 The original data-set has a quantitative output metric: a rating between 0-10. This problem could be a candidate for a regression model. It would be interesting to compare the effectiveness and usefulness of this consideration and could be explored in a future iteration.
 
