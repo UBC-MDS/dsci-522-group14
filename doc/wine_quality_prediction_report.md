@@ -2,15 +2,19 @@ Predicting Wine Quality Using Physicochemical Properties
 ================
 Contributors: Jianru Deng, Yuyan Guo, Vignesh Lakshmi Rajakumar, Cameron
 Harris
+December 12th, 2020
 
   - [Acknowledgements](#acknowledgements)
-  - [Data Summary](#data-summary)
+  - [Summary](#summary)
+  - [Introduction of the Data](#introduction-of-the-data)
   - [Preprocessing of Features](#preprocessing-of-features)
   - [Modelling and Cross Validation
     Scores](#modelling-and-cross-validation-scores)
   - [Hyperparameter Optimization](#hyperparameter-optimization)
   - [Test Data Scores and
     Conclusions](#test-data-scores-and-conclusions)
+  - [Further Improvements and Potential
+    Problems](#further-improvements-and-potential-problems)
   - [References](#references)
 
 ## Acknowledgements
@@ -18,7 +22,7 @@ Harris
 The data set was produced by P. Cortez, A. Cerdeira, F. Almeida, T.
 Matos and J. Reis. Modeling wine preferences by data mining from
 physicochemical properties. In Decision Support Systems, Elsevier,
-47(4):547-553, 2009. It was sourced from (Dua and Graff 2017) Dua, D.
+47(4):547-553, 2009. It was sourced from (Dua and Graff 2019) Dua, D.
 and Graff, C. (2019). UCI Machine Learning Repository
 \[<http://archive.ics.uci.edu/ml>\]. Irvine, CA: University of
 California, School of Information and Computer Science.
@@ -30,17 +34,35 @@ help of the Knitr (Xie 2014), kableExtra (Zhu 2020), docopt(de Jonge
 2018), pandas (team 2020) package. File paths were managed using the
 Here (Müller 2020) package.
 
-## Data Summary
+## Summary
+
+In this project, we aim to build a supervised machine learning pipeline
+and fit a best performing classification model to predict if a wine is
+“good”(6 or higher out of 10) or “bad” (5 or lower out of 10) based on
+its physicochemical properties. After carrying out the model comparison,
+the best performing model turned out to be the random forest classifier.
+It performed reasonably on the unseen test set with test accuracy of
+0.85. The test set consisted of 1300 examples, and the model correctly
+predicted 85% of them. Also the test set is fairly large, so the test
+accuracy can be trusted to be a good approximation of the model
+performance on the deployment data. Depending on the specific
+application of the model, the test accuracy can either be good or not.
+If the downstream application requires higher accuracy, we propose to
+keep improving the model with more advanced techniques. More suggestions
+can be found in the last section of the report: “Further Improvements
+and Potential Problem”.
+
+## Introduction of the Data
 
 The [dataset](https://archive.ics.uci.edu/ml/datasets/Wine+Quality) used
 for this prediction task contains physicochemical properties (features)
 of nearly 5000 wines and their wine quality as a score from 0-10
 (targets). The wine quality scores were determined by human wine taste
 preference (median of at least 3 evaluations made by wine experts). Each
-expert graded the wine quality between 0 (very bad) and 10 (very
-excellent). The features (physicochemical properties) were determined by
-analytic tests. Overall there were eleven numeric features and one
-categorical feature (see
+expert graded the wine quality between 0 (very bad) and 10 (excellent).
+The features (physicochemical properties) were determined by analytic
+tests. Overall there were eleven numeric features and one categorical
+feature (see
 [README.md](https://github.com/UBC-MDS/dsci-522-group14/blob/main/README.md)
 file for more details on features).
 
@@ -61,12 +83,12 @@ a binary classification one (i.e. good vs. bad wine). The first
 observation, which came from a distribution of the training target
 values, was that not all classes were well represented for the target
 values. The second observation was that the majority of wine quality
-scores were between 4-6. From this information, we decided that a
-multi-class classification approach would yield poor prediction results
-and provide little in value in identifying important features for
-determining wine quality. Whereas with a binary classification, we could
-better predict which types of chemical and physical characteristics can
-be attributed to good wines.
+scores were between 4-6. From this information, we decided that
+multi-class classification would yield poor prediction results and
+provide little in value in identifying important features for
+determining wine quality. Whereas a binary classification allows us to
+make better predictions and determine which types of chemical and
+physical characteristics can be attributed to good wines.
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 
@@ -1009,12 +1031,12 @@ train and test sets. For this task, an 80/20 train/test split was used.
 
 ## Preprocessing of Features
 
-As mentioned, there were eleven numeric features and one categorical
-feature. For this analysis, the eleven numeric features were scaled
-using a standard scalar, which involves removing the mean and scaling to
-unit variance (\[@sk-learn\]). The categorical feature, wine type, only
-contained two values (red and white) so it was treated as a binary
-feature.
+In this analysis there are eleven numeric features and one categorical
+feature. For this analysis, the numeric features were scaled using a
+standard scalar transformer, which involves removing the mean and
+scaling to unit variance (Pedregosa et al. 2011). The categorical
+feature, wine type, only contained two values (red and white) and was
+treated as a binary feature.
 
 ## Modelling and Cross Validation Scores
 
@@ -1025,12 +1047,12 @@ consequence to a false negative or false positive classifications,
 therefore recall and precision are of low importance to us. Accuracy
 provides a simple, clear way to compare model performance.
 
-\[ \\text{Accuracy} = \\frac{\\text{Number of correct predictions}}{\\text{Number of examples}} \]
+\[ \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Number of examples}} \]
 The following models were evaluated to predict the wine quality label:
 
   - Dummy classifier
   - Decision tree
-  - RBF SVM: SVC
+  - Support Vector Classification with Radial Basis Function
   - Logistic Regression
   - Random Forest
 
@@ -1116,13 +1138,13 @@ DummyClassifier
 
 <td style="text-align:right;">
 
-0.0034
+0.0039
 
 </td>
 
 <td style="text-align:right;">
 
-0.0014
+0.0018
 
 </td>
 
@@ -1162,13 +1184,13 @@ Decision Tree
 
 <td style="text-align:right;">
 
-0.0606
+0.0463
 
 </td>
 
 <td style="text-align:right;">
 
-0.0088
+0.0087
 
 </td>
 
@@ -1208,13 +1230,13 @@ RBF SVM
 
 <td style="text-align:right;">
 
-0.7542
+0.5288
 
 </td>
 
 <td style="text-align:right;">
 
-0.0760
+0.0703
 
 </td>
 
@@ -1254,13 +1276,13 @@ Logistic Regression
 
 <td style="text-align:right;">
 
-0.0396
+0.0372
 
 </td>
 
 <td style="text-align:right;">
 
-0.0084
+0.0068
 
 </td>
 
@@ -1300,13 +1322,13 @@ Random Forest
 
 <td style="text-align:right;">
 
-0.8782
+0.7427
 
 </td>
 
 <td style="text-align:right;">
 
-0.0382
+0.0340
 
 </td>
 
@@ -1328,19 +1350,18 @@ Random Forest
 
 </table>
 
-The results in Table 2 show that the Random Forest classified the wine
-quality with the highest accuracy on the training data with a validation
-score of 0.82. This was not surprising to our team as Random Forest is
-one of the most widely used and powerful model for classification
-problems.
+The results in Table 2 show that the Random Forest predicts wine quality
+with the highest accuracy on the training data with a validation score
+of 0.82. This was not surprising to our team as Random Forest is one of
+the most widely used and powerful model for classification problems.
 
-The SVC with RBF SVM model performed the next best with a validation
-score of 0.769.
+The SVC with RBF model performed the next best with a validation score
+of 0.769.
 
 ## Hyperparameter Optimization
 
 Given the cross validation results above, hyperparameter optimization
-was carried out on our Random Forest model on the number of trees and
+was carried out on the Random Forest model on the number of trees and
 maximum tree depth parameters.
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1575,69 +1596,43 @@ Finally, with a Random Forest model containing optimized
 hyperparameters, we were able to test the accuracy of our model on the
 test data set.
 
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+With optimized hyperparameters, the Random Forest model was able to
+achieve a test accuracy of 0.848 on the test data set. This is slightly
+higher than the validation scores using the training data, which tells
+us that we may have got a bit lucky on the test data set. But overall,
+the model is doing a decent job at predicting the wine label of “good”
+or “bad” given the physicochemical properties as features.
 
-<caption>
-
-Table 4. Random Forest scores on test data set
-
-</caption>
-
-<thead>
-
-<tr>
-
-<th style="text-align:right;">
-
-test\_score
-
-</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td style="text-align:right;">
-
-0.8476923
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-With an optimized, Random Forest model, we were able to achieve an
-accuracy of 0.848 on the test data set. This is slightly higher than the
-validation scores using the training data, which tells us that we may
-have got a bit lucky on the test data set. But overall, the model is
-doing a decent job at predicting the wine label of “good” or “bad” given
-the physicochemical properties as features.
-
-If we recall the main research question:
+Recalling the main research question:
 
 > Can we predict if a wine is “good” (6 or higher out of 10) or “bad” (5
 > or lower out of 10) based on its physicochemical properties alone?
 
-The results show that with about 85% accuracy, it is possible to predict
-whether a wine may be considered “good” (6/10 or higher) or “bad” (5/10
-or lower).
+The results show that with 85% test accuracy, which means that the
+fitted model is able to predict 85% of the test examples correctly. So
+it is possible to predict whether a wine may be considered “good” (6/10
+or higher) or “bad” (5/10 or lower) given the features we have.
 
-Some further work that may result in higher prediction accuracy could
-include feature selection optimization. For example, some of the
-features seem like they could be correlated (e.g. free sulphur dioxide,
-total sulphur dioxide, sulphates).
+## Further Improvements and Potential Problems
 
-The original data-set has an quantitative output metric: a rating
-between 0-10. This problem could be a candidate for a regression model.
-It would be interesting to compare the effectiveness and usefulness of
-this consideration and could be explored in a future iteration.
+Some further work that may result in higher prediction accuracy and
+higher model interpretability could include feature selection and
+feature engineering. Based on the result of EDA, some of the features
+seem like they could be correlated (e.g. free sulphur dioxide, total
+sulphur dioxide, sulphates), which may be removed after feature
+selection. The feature engineering may require some domain knowledge, as
+the features are very domain-specific. However, adding more relevant
+features can be potentially helpful.
+
+Except for random forest classifier and all the other classifiers we
+tested, there are still some other powerful classification models which
+are not tested in this project but may improve the prediction accuracy.
+(e.g. XGBoost, LightGBM, Catboost etc)
+
+The original data-set has a quantitative output metric: a rating between
+0-10. This problem could be a candidate for a regression model. It would
+be interesting to compare the effectiveness and usefulness of this
+consideration and could be explored in a future iteration.
 
 Another point of interest in problem is the subjectivity of wine
 quality. The current data set uses a median rating from multiple
@@ -1658,7 +1653,7 @@ Language*. <https://CRAN.R-project.org/package=docopt>.
 
 <div id="ref-Dua:2019">
 
-Dua, Dheeru, and Casey Graff. 2017. “UCI Machine Learning Repository.”
+Dua, Dheeru, and Casey Graff. 2019. “UCI Machine Learning Repository.”
 University of California, Irvine, School of Information; Computer
 Sciences. <http://archive.ics.uci.edu/ml>.
 
