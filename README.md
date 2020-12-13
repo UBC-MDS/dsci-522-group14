@@ -81,13 +81,13 @@ docker pull vigneshrajakumar/wine_predictor
 ```
 
 ```bash
-docker run --rm -p 8787:8787 -e PASSWORD="test" -v $(pwd):/home/data-analysis -it vigneshrajakumar/wine_predictor make -C "home/data-analysis/" all
+docker run --rm -p 8787:8787 -e PASSWORD="test" -v /$(pwd):/home/data-analysis -it vigneshrajakumar/wine_predictor make -C "home/data-analysis/" all
 ```
 
 To reset the repo to a clean state, run the following from the root directory of the project:
 
 ```bash
-docker run --rm -p 8787:8787 -e PASSWORD="test" -v $(pwd):/home/data-analysis -it vigneshrajakumar/wine_predictor make -C "home/data-analysis/" clean
+docker run --rm -p 8787:8787 -e PASSWORD="test" -v /$(pwd):/home/data-analysis -it vigneshrajakumar/wine_predictor make -C "home/data-analysis/" clean
 ```
 
 #### Dependency Diagram of the Makefile
