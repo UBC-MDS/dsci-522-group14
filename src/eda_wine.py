@@ -126,7 +126,7 @@ def draw_target_plot(train_df):
     Returns:
         alt.Chart: plot object of target plot
     """
-    target_plot = alt.Chart(train_df, title='Target distribution').mark_bar().encode(
+    target_plot = alt.Chart(train_df, title='Target Counts').mark_bar().encode(
         x='target',
         y='count()'
     )
