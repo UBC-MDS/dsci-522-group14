@@ -1,3 +1,4 @@
+# Use rocker tidyverse as base to get make, base r and tidyverse
 FROM rocker/tidyverse
 
 # R dependencies for final report

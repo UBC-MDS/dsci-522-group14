@@ -32,7 +32,7 @@ This prediction problem could have been framed as either a multi-class classific
 
 Next, we determined the point at which to split whether a wine is considered good or bad. This was done with the goal of minimizing the amount of class imbalance in the dataset as well as considering the rating in reality. A split at 5.5 (i.e. 6 or higher is good, 5 or lower is bad) was determined to be the resonable option from both perspectives and led to a 60/40 class split of good/bad wines respectively. 
 
-Feature-target relationships were also plotted during EDA to see if any features stood out as potentially good indicators of wine quality. The most prevelant feature at indicating quality appeared to be alcohol content. Further discussion of the EDA can be found [here](https://github.com/UBC-MDS/dsci-522-group14/blob/main/src/wine_quality_eda.ipynb). 
+Feature-target relationships were also plotted during EDA to see if any features stood out as potentially good indicators of wine quality. The most prevelant feature at indicating quality appeared to be alcohol content. Further discussion of the EDA can be found [here](https://github.com/UBC-MDS/dsci-522-group14/blob/main/src/wine_quality_eda.ipynb).
 
 The data is presented as separate tables for red and white wine, we elected to combine the data into one dataset and see if the type of wine influences the rating. The resulting table contains 12 features (11 numeric and 1 binary categorical). For modelling, the numeric features will be scaled using sci-kit-learn's StandardScalar() transformer. While the categorical feature will be transformed to a binary one using OneHotEncoding(). Given the nature of the classification problem, the following models will be evaluated and scored to determine their appropriateness in prediction:
 - DummyClassifier (baseline)
@@ -45,7 +45,7 @@ The data is presented as separate tables for red and white wine, we elected to c
 The results of this analysis will be presented in a report outlining the prediction accuracy of various models (as a table) and discussion of which features are important for this prediction task (e.g. Logistic Regression coefficients).
 
 This Data Set was created by P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
-Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009. It was sourced from the UCI Machine Learning Repository (Dua and Graff 2017). Due to privacy reasons, only the physicochemical properties have been included and information about the company, grape type, price, etc. are left out. 
+Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009. It was sourced from the UCI Machine Learning Repository (Dua and Graff 2017). Due to privacy reasons, only the physicochemical properties have been included and information about the company, grape type, price, etc. are left out.
 
 ### Report
 
@@ -89,6 +89,8 @@ To reset the repo to a clean state, run the following from the root directory of
 ```bash
 docker run --rm -p 8787:8787 -e PASSWORD="test" -v /$(pwd):/home/data-analysis -it vigneshrajakumar/wine_predictor make -C "home/data-analysis/" clean
 ```
+
+> When running on windows, you would have to use Git Bash or a similar linux style shell for the above commands to work.
 
 #### Dependency Diagram of the Makefile
 ![](Makefile.png)
