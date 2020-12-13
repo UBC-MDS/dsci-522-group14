@@ -1,6 +1,9 @@
 ---
 title: "Predicting Wine Quality Using Physicochemical Properties"
+
 author: "Contributors: Jianru Deng, Yuyan Guo, Vignesh Lakshmi Rajakumar, Cameron Harris"
+
+date: December 12th, 2020
 always_allow_html: true
 output: 
   html_document:
@@ -60,13 +63,13 @@ For this classification problem we determined that we could ignore class imbalan
 
 ## Preprocessing of Features
 
-In this analysis there are eleven numeric features and one categorical feature. For this analysis, the numeric features were scaled using a standard scalar transformer, which involves removing the mean and scaling to unit variance ([\@sk-learn]). The categorical feature, wine type, only contained two values (red and white) and was treated as a binary feature.
+In this analysis there are eleven numeric features and one categorical feature. For this analysis, the numeric features were scaled using a standard scalar transformer, which involves removing the mean and scaling to unit variance [@sk-learn]. The categorical feature, wine type, only contained two values (red and white) and was treated as a binary feature.
 
 ## Modelling and Cross Validation Scores
 
 All models were evaluated through five-fold cross validation on the training data set. Accuracy was used as the primary metric to evaluate model performance. For this classification problem, there is low consequence to a false negative or false positive classifications, therefore recall and precision are of low importance to us. Accuracy provides a simple, clear way to compare model performance.
 
-$$ \\text{Accuracy} = \\frac{\\text{Number of correct predictions}}{\\text{Number of examples}} $$ The following models were evaluated to predict the wine quality label:
+$$ \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Number of examples}} $$ The following models were evaluated to predict the wine quality label:
 
 -   Dummy classifier
 -   Decision tree
